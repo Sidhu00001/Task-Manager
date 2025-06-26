@@ -27,7 +27,7 @@ router.post('/login',async (req,res)=>{
     if(!isMatch){
         throw new Error('Invalid credentials');
     }
-    const token=jsonwebtoken.sign({id:user._id},process.env.JWT_SECRET,{expiresIn:'1h'});
+    const token=jsonwebtoken.sign({id:user._id.toString()},process.env.JWT_SECRET);
 res.status(200).send({message:'Login successful',token});
 }
 catch(err){
